@@ -29,13 +29,39 @@ function getWeather(zipcode) {
 
     const params = {
         appid: weatherKey,
-        zip: zipcode
+        zip: zipcode,
+        units: 'imperial'
     }    
 
     const queryString = formatQueryParams(params);
     const url = weatherURL + '?' + queryString;
-    console.log(url);
     fetch(url)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson));
+        .then(responseJson => displayCurrentWeather(responseJson));
 }
+
+// Display current weather
+function displayCurrentWeather(responseJson) {
+    console.log(responseJson.main.feels_like)
+    const temp = Math.round(responseJson.main.temp);
+    const feelsLike = Math.round(responseJson.main.feels_like);
+    const icon = responseJson.weather[0].icon;
+    const conditions = responseJson.weather[0].description
+    
+
+    $('#js-results').append(
+        `<h3>Here is your weather</h3>
+        <ul>
+            <li>${getWeatherIcon(icon, conditions)}</li>
+            <li>Temperature: ${temp}&degF (Feels like: ${feelsLike}&degF)</li>
+            <li>Humidity: ${responseJson.main.humidity}%</li>
+        </ul>`
+    )
+}
+
+function getWeatherIcon(icon, conditions) {
+    console.log(icon);
+    return `<img src='http://openweathermap.org/img/wn/${icon}.png' alt='${conditions}'`;
+}
+
+$(getPostalCode);
