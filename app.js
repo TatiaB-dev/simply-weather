@@ -47,7 +47,8 @@ function displayCurrentWeather(responseJson) {
     const feelsLike = Math.round(responseJson.main.feels_like);
     const icon = responseJson.weather[0].icon;
     const conditions = responseJson.weather[0].description
-    
+
+    getCityName(responseJson.name);
 
     $('#js-results').append(
         `<h3>Here is your weather</h3>
@@ -62,6 +63,11 @@ function displayCurrentWeather(responseJson) {
 function getWeatherIcon(icon, conditions) {
     console.log(icon);
     return `<img src='http://openweathermap.org/img/wn/${icon}.png' alt='${conditions}'`;
+}
+
+function getCityName(city) {
+    console.log(city);
+    return $('#js-city-header').html(`Hello ${city}`);
 }
 
 $(getPostalCode);
