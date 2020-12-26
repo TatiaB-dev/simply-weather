@@ -60,14 +60,29 @@ function displayCurrentWeather(responseJson) {
     )
 }
 
+// Return html for weather icon
 function getWeatherIcon(icon, conditions) {
     console.log(icon);
     return `<img src='http://openweathermap.org/img/wn/${icon}.png' alt='${conditions}'`;
 }
 
+// Return Update / return city name to h1
 function getCityName(city) {
     console.log(city);
-    return $('#js-city-header').html(`Hello ${city}`);
+    return $('#js-city-header').html(`Hello, ${city}`);
 }
 
-$(getPostalCode);
+// Listen for button click to get input info
+function handleFormSubmit() {
+    $('#js-find-btn').on('click', function(event) {
+        console.log('Clicked');
+        event.preventDefault();
+    })
+}
+
+function handleWeatherApp() {
+    getPostalCode();
+    handleFormSubmit();
+}
+
+$(handleWeatherApp);
