@@ -77,6 +77,9 @@ function handleFormSubmit() {
     $('#js-find-btn').on('click', function(event) {
         console.log('Clicked');
         event.preventDefault();
+        const inputZip = $('#js-search-city').val()
+        $('#js-results').empty();
+        getWeather(inputZip);
     })
 }
 
