@@ -23,7 +23,7 @@ function getPostalCode() {
         .then(responseJson => getWeather(responseJson.location.postalCode));
 }
 
-// Get weather
+// Get weather zipcode
 function getWeather(zipcode) {
     console.log(zipcode);
 
@@ -32,6 +32,21 @@ function getWeather(zipcode) {
         zip: zipcode,
         units: 'imperial'
     }    
+
+    const queryString = formatQueryParams(params);
+    const url = weatherURL + '?' + queryString;
+    fetch(url)
+        .then(response => response.json())
+        .then(responseJson => displayCurrentWeather(responseJson));
+}
+
+// Get weather by City / State / Country
+function getWeatherByCity(city) {
+    const params = {
+        appid: weatherKey,
+        q: city,
+        units: 'imperial'
+    }
 
     const queryString = formatQueryParams(params);
     const url = weatherURL + '?' + queryString;
@@ -72,20 +87,39 @@ function getCityName(city) {
     return $('#js-city-header').html(`Hello, ${city}`);
 }
 
-// Listen for button click to get input info
+// Listen for submission button click to get input info
 function handleFormSubmit() {
     $('#js-find-btn').on('click', function(event) {
         console.log('Clicked');
         event.preventDefault();
-        const inputZip = $('#js-search-city').val()
         $('#js-results').empty();
-        getWeather(inputZip);
+        const input = $('#js-search-city').val()
+        // Test to see if integer, if so, getWeather(zipcode), else getWeatherByCity
+        if (parseInt(input) == input) {
+            getWeather(input);
+        } else if (parseInt(input) !== input) {
+            getWeatherByCity(input);
+        }
     })
 }
+
+// Listen for get forecast button click to generate forecast html
+function handleForecastBtn() {
+    $('#js-forecast-btn').on('click', function(event) {
+        console.log('Clicked');
+        event.preventDefault();
+        $('#js-results').empty();
+
+        
+    })
+}
+
+
 
 function handleWeatherApp() {
     getPostalCode();
     handleFormSubmit();
+    handleForecastBtn();
 }
 
 $(handleWeatherApp);
