@@ -77,7 +77,10 @@ function getForecast(city) {
 function displayForecast(responseJson) {
     console.log(responseJson);
 
-    
+    $('#js-results').append(`
+    <ul>
+        <li>Test</li>
+    </ul>`)
 }
 
 // Display current weather
