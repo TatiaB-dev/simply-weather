@@ -4,6 +4,7 @@ const locationKey = 'at_fELojdjZn4q2fyV7OJzuZSk6InEZK';
 
 // Open Weather API url and key
 const weatherURL = 'https://api.openweathermap.org/data/2.5/weather';
+const forecastURL = 'http://api.openweathermap.org/data/2.5/forecast';
 const weatherKey = '3fa398fa8f3f496773abff4d988f09eb';
 
 // Formats the apis query parameters
@@ -53,6 +54,30 @@ function getWeatherByCity(city) {
     fetch(url)
         .then(response => response.json())
         .then(responseJson => displayCurrentWeather(responseJson));
+}
+
+// Get Forecast
+function getForecast(city) {
+    console.log('Ran');
+
+    const params = {
+        appid: weatherKey,
+        q: city,
+        units: 'imperial'
+    }    
+
+    const queryString = formatQueryParams(params);
+    const url = forecastURL + '?' + queryString;
+    fetch(url)
+        .then(response => response.json())
+        .then(responseJson => displayForecast(responseJson));
+}
+
+// Display Forecast
+function displayForecast(responseJson) {
+    console.log(responseJson);
+
+    
 }
 
 // Display current weather
@@ -109,8 +134,11 @@ function handleForecastBtn() {
         console.log('Clicked');
         event.preventDefault();
         $('#js-results').empty();
+        const getCity = $('#js-city-header').text()
+        const city = getCity.replace('Hello, ',''); //Consider another way...
+        console.log(city);
 
-        
+        getForecast(city);
     })
 }
 
