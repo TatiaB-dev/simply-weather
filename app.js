@@ -50,6 +50,10 @@ function getCityName(city) {
     return $('#js-city-header').html(`Hello, ${city}`);
 }
 
+function getMiles(meters) {
+    return (meters * 0.000621371192).toFixed(1) + 'mi';
+}
+
 // Fetch IP Geolocation API Request Functions //
 
     // Gets the urser's current location based on their IP address
@@ -136,6 +140,7 @@ function displayCurrentWeather(responseJson) {
     const feelsLike = Math.round(responseJson.main.feels_like);
     const icon = responseJson.weather[0].icon;
     const conditions = responseJson.weather[0].description;
+    const miles = getMiles(responseJson.visibility)
     let sunset = getDate(responseJson.sys.sunset);
     let sunrise = getDate(responseJson.sys.sunrise);
     sunrise = sunrise.slice(10);
@@ -156,6 +161,7 @@ function displayCurrentWeather(responseJson) {
                     <li>Humidity: ${responseJson.main.humidity}%</li>
                     <li>Sunrise: ${sunrise}</li>
                     <li>Sunset: ${sunset}</li>
+                    <li>Visibility: ${miles}</li>
                 </ul>
             </section>
         </container>`
