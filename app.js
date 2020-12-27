@@ -1,6 +1,6 @@
 // IP Geolocation API url and key
-const locationURL = 'https://geo.ipify.org/api/v1';
-const locationKey = 'at_fELojdjZn4q2fyV7OJzuZSk6InEZK';
+const ipGeoLocateURL = 'https://geo.ipify.org/api/v1';
+const ipGeoLocateKey = 'at_fELojdjZn4q2fyV7OJzuZSk6InEZK';
 
 // Open Weather API url and key
 const weatherURL = 'https://api.openweathermap.org/data/2.5/weather';
@@ -16,8 +16,8 @@ function formatQueryParams(params) {
 
 // Gets current location based on IP address
 function getPostalCode() {
-    const key = 'apiKey' + '=' + locationKey;
-    const url = locationURL + '?' + key;
+    const key = 'apiKey' + '=' + ipGeoLocateKey;
+    const url = ipGeoLocateURL + '?' + key;
 
     fetch(url)
         .then(response => response.json())
