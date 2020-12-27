@@ -9,16 +9,33 @@ const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 const forecastURL = 'http://api.openweathermap.org/data/2.5/forecast';
 const weatherKey = '3fa398fa8f3f496773abff4d988f09eb';
 
+// General Formatting Functions //
 
-
-// Formats the apis query parameters
+    // Formats the query parameters for all api requests
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return queryItems.join('&');
 }
 
-// Gets current location based on IP address
+    // Formats date and time from unix timestamp to more legible date and time
+function getDate(unixTime) {
+    return dateObj = new Date(unixTime * 1000);
+}
+
+    // Return html for weather icon
+function getWeatherIcon(icon, conditions) {
+    return `<img src='http://openweathermap.org/img/wn/${icon}.png' alt='${conditions}'>`;
+}
+
+    // Updates the header on the screen with the user's current city or the city searched for
+function getCityName(city) {
+    return $('#js-city-header').html(`Hello, ${city}`);
+}
+
+// Fetch IP Geolocation API Request Functions //
+
+    // Gets the urser's current location based on their IP address
 function getPostalCode() {
     const key = 'apiKey' + '=' + ipGeoLocateKey;
     const url = ipGeoLocateURL + '?' + key;
@@ -28,9 +45,10 @@ function getPostalCode() {
         .then(responseJson => getWeather(responseJson.location.postalCode));
 }
 
-// Get weather zipcode
+// Fetch Weather API Request Functions //
+
+    // API request to get current weather based on user's zipcode
 function getWeather(zipcode) {
-    console.log(zipcode);
 
     const params = {
         appid: weatherKey,
@@ -45,7 +63,7 @@ function getWeather(zipcode) {
         .then(responseJson => displayCurrentWeather(responseJson));
 }
 
-// Get weather by City / State / Country
+    // API request to get the current weather based on user's city
 function getWeatherByCity(city) {
     const params = {
         appid: weatherKey,
@@ -60,9 +78,8 @@ function getWeatherByCity(city) {
         .then(responseJson => displayCurrentWeather(responseJson));
 }
 
-// Get Forecast
+    // API request to get the 5 day forecast for a user based on the search query: city
 function getForecast(city) {
-    console.log('Ran');
 
     const params = {
         appid: weatherKey,
@@ -77,14 +94,9 @@ function getForecast(city) {
         .then(responseJson => displayForecast(responseJson));
 }
 
-// Get date and time from unixTime
-function getDate(unixTime) {
-    return dateObj = new Date(unixTime * 1000);
-}
+// Displaying functions for each screen the user sees // 
 
-// Display Forecast
 function displayForecast(responseJson) {
-    console.log(responseJson.list.length);
 
     for (let i = 0; i < responseJson.list.length; i += 2) {
         const date = getDate(responseJson.list[i].dt)
@@ -103,9 +115,8 @@ function displayForecast(responseJson) {
     }
 }
 
-// Display current weather
 function displayCurrentWeather(responseJson) {
-    console.log(responseJson.main.feels_like)
+
     const temp = Math.round(responseJson.main.temp);
     const feelsLike = Math.round(responseJson.main.feels_like);
     const icon = responseJson.weather[0].icon;
@@ -124,27 +135,17 @@ function displayCurrentWeather(responseJson) {
     )
 }
 
-// Return html for weather icon
-function getWeatherIcon(icon, conditions) {
-    console.log(icon);
-    return `<img src='http://openweathermap.org/img/wn/${icon}.png' alt='${conditions}'>`;
-}
+// Button Click, User Interaction Functions //
 
-// Return Update / return city name to h1
-function getCityName(city) {
-    console.log(city);
-    return $('#js-city-header').html(`Hello, ${city}`);
-}
-
-// Listen for submission button click to get input info
+    // Listen for submission button click to get input info
 function handleFormSubmit() {
+
     $('#js-find-btn').on('click', function(event) {
-        console.log('Clicked');
         event.preventDefault();
         $('#js-results').empty();
         const input = $('#js-search-city').val()
-        // Test to see if integer, if so, getWeather(zipcode), else getWeatherByCity
-        if (parseInt(input) == input) {
+
+        if (parseInt(input) == input) { // This tests to see if integer, if so, getWeather(zipcode), else getWeatherByCity
             getWeather(input);
         } else if (parseInt(input) !== input) {
             getWeatherByCity(input);
@@ -152,15 +153,13 @@ function handleFormSubmit() {
     })
 }
 
-// Listen for get forecast button click to generate forecast html
+    // Listen for get forecast button click to generate forecast html
 function handleForecastBtn() {
     $('#js-forecast-btn').on('click', function(event) {
-        console.log('Clicked');
         event.preventDefault();
         $('#js-results').empty();
         const getCity = $('#js-city-header').text()
-        const city = getCity.replace('Hello, ',''); //Consider another way...
-        console.log(city);
+        const city = getCity.replace('Hello, ',''); //Consider another way...??
 
         getForecast(city);
     })
