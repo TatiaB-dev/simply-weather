@@ -188,6 +188,8 @@ function displayForecast(responseJson) {
 function displayCurrentWeather(responseJson) {
 
     $('#js-forecast-btn').removeClass('hidden');
+    $('#js-results').addClass('results');
+
 
     const temp = Math.round(responseJson.main.temp);
     const feelsLike = Math.round(responseJson.main.feels_like);
@@ -232,6 +234,7 @@ function handleFormSubmit() {
     $('#js-find-btn').on('click', function(event) {
         event.preventDefault();
         $('#js-results').empty();
+        $('#js-error-message').empty();
         const input = $('#js-search-city').val()
 
         if (parseInt(input) == input) { // This tests to see if integer, if so, getWeather(zipcode), else getWeatherByCity
