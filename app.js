@@ -135,25 +135,29 @@ function displayCurrentWeather(responseJson) {
     const temp = Math.round(responseJson.main.temp);
     const feelsLike = Math.round(responseJson.main.feels_like);
     const icon = responseJson.weather[0].icon;
-    const conditions = responseJson.weather[0].description
+    const conditions = responseJson.weather[0].description;
+    let sunset = getDate(responseJson.sys.sunset);
+    let sunrise = getDate(responseJson.sys.sunrise);
+    sunrise = sunrise.slice(10);
+    sunset = sunset.slice(10);
 
     getCityName(responseJson.name);
 
     $('#js-results').append(
-        // `<h3>The weather right now is...</h3>
-        // <ul>
-        //     <li>${getWeatherIcon(icon, conditions)} <p>${temp}&degF</p></li>
-        //     <li>Take a look at the ${conditions}</li>
-        //     <li>Temperature: ${temp}&degF (Feels like: ${feelsLike}&degF)</li>
-        //     <li>Humidity: ${responseJson.main.humidity}%</li>
-        // </ul>`
         `<h3>The weather right now is... </h3>
         <container>
-            <div class='main-weather'>
+            <section class='main-weather'>
                 <div>${getWeatherIcon(icon, conditions)}</div>
                 <div><h3 class='temp'>${temp}&degF</h3></div>
                 <div><p class='feels-like'>(Feels like ${feelsLike}&degF)</p></div>
-            </div>
+            </section>
+            <section class='weather-details'>
+                <ul class='weather-list'>
+                    <li>Humidity: ${responseJson.main.humidity}%</li>
+                    <li>Sunrise: ${sunrise}</li>
+                    <li>Sunset: ${sunset}</li>
+                </ul>
+            </section>
         </container>`
     )
 }
