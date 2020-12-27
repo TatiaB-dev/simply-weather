@@ -18,6 +18,14 @@ function formatQueryParams(params) {
     return queryItems.join('&');
 }
 
+    // Get the name of the day of the week from the numerical day
+function getWeekday(unixTime) {
+    let date = new Date(unixTime * 1000);
+    let day = date.getDay();
+    const weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    return weekdays[day];
+}
+
     // Formats date and time from unix timestamp to more legible date and time
 function getDate(unixTime) {
     let date = new Date(unixTime * 1000);
@@ -35,8 +43,9 @@ function getDate(unixTime) {
     hour = (hour % 12) || 12;
 
     let finalTime = hour + ':' + minutes + amOrPM
-    let finalDate = month + '.' + day + '.' + year
+    let finalDate = month + '/' + day + '/' + year
 
+    
     return finalDate + ' ' + finalTime;
 }
 
@@ -117,20 +126,27 @@ function getForecast(city) {
 
 function displayForecast(responseJson) {
 
-    for (let i = 0; i < responseJson.list.length; i += 2) {
-        const date = getDate(responseJson.list[i].dt)
+    $('#js-results').removeClass('results');
+
+    for (let i = 0; i < responseJson.list.length; i += 8) {
+        const date = getDate(responseJson.list[i].dt);
+        const weekday = getWeekday(responseJson.list[i].dt);
         const icon = responseJson.list[i].weather[0].icon;
         const conditions = responseJson.list[i].weather[0].description;
-        
+
         $('#js-results').append(`
-        <ul>
-            <li><h3>${date}</h3></li>
-            <li>${getWeatherIcon(icon, conditions)}</li>
-            <li>Take a look at the ${conditions}</li>
-            <li>${responseJson.list[i].main.temp}&degF</li>
-            <li>${responseJson.list[i].main.feels_like}&degF</li>
-            <li>${responseJson.list[i].main.humidity}%</li>
-        </ul>`)
+            <section class='forecast'>
+                <div class='card'>
+                    <h2>${weekday}</h2>
+                    <p>${date}</p>
+                    <section class='main-weather'>
+                        <div>${getWeatherIcon(icon, conditions)}</div>
+                        <div><h3 class='temp'>${responseJson.list[i].main.temp}&degF</h3></div>
+                        <div><p class='feels-like'>(Feels like ${responseJson.list[i].main.feels_like}&degF)</p></div>
+                    </section>
+                </div>
+            </section>
+        `)
     }
 }
 
@@ -150,23 +166,25 @@ function displayCurrentWeather(responseJson) {
     getCityName(responseJson.name);
 
     $('#js-results').append(
-        `<h3>The weather right now is... </h3>
-        <container>
-            <section class='main-weather'>
-                <div>${getWeatherIcon(icon, conditions)}</div>
-                <div><h3 class='temp'>${temp}&degF</h3></div>
-                <div><p class='feels-like'>(Feels like ${feelsLike}&degF)</p></div>
-            </section>
-            <section class='weather-details'>
-                <ul class='weather-list'>
-                    <li>Humidity: ${responseJson.main.humidity}%</li>
-                    <li>Visibility: ${miles}</li>
-                    <li>Sunrise: ${sunrise}</li>
-                    <li class='break'>Sunset: ${sunset}</li>
-                    <li>Wind Speed: ${wind}m/h</li>
-                </ul>
-            </section>
-        </container>`
+        `<div class='card current-weather'>
+            <h3>The weather right now is... </h3>
+            <container>
+                <section class='main-weather'>
+                    <div>${getWeatherIcon(icon, conditions)}</div>
+                    <div><h3 class='temp'>${temp}&degF</h3></div>
+                    <div><p class='feels-like'>(Feels like ${feelsLike}&degF)</p></div>
+                </section>
+                <section class='weather-details'>
+                    <ul class='weather-list'>
+                        <li>Humidity: ${responseJson.main.humidity}%</li>
+                        <li>Visibility: ${miles}</li>
+                        <li>Sunrise: ${sunrise}</li>
+                        <li class='break'>Sunset: ${sunset}</li>
+                        <li>Wind Speed: ${wind}m/h</li>
+                    </ul>
+                </section>
+            </container>
+        </div>`
     )
 }
 
