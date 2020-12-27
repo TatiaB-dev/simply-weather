@@ -63,7 +63,6 @@ function getWeather(zipcode) {
         .then(responseJson => displayCurrentWeather(responseJson));
 }
 
-    // API request to get the current weather based on user's city
 function getWeatherByCity(city) {
     const params = {
         appid: weatherKey,
@@ -78,7 +77,6 @@ function getWeatherByCity(city) {
         .then(responseJson => displayCurrentWeather(responseJson));
 }
 
-    // API request to get the 5 day forecast for a user based on the search query: city
 function getForecast(city) {
 
     const params = {
@@ -137,7 +135,6 @@ function displayCurrentWeather(responseJson) {
 
 // Button Click, User Interaction Functions //
 
-    // Listen for submission button click to get input info
 function handleFormSubmit() {
 
     $('#js-find-btn').on('click', function(event) {
@@ -153,7 +150,6 @@ function handleFormSubmit() {
     })
 }
 
-    // Listen for get forecast button click to generate forecast html
 function handleForecastBtn() {
     $('#js-forecast-btn').on('click', function(event) {
         event.preventDefault();
