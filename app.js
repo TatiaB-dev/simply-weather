@@ -151,7 +151,8 @@ function displayCurrentWeather(responseJson) {
         <container>
             <div class='main-weather'>
                 <div>${getWeatherIcon(icon, conditions)}</div>
-                <div>${temp}&degF</div>
+                <div><h3 class='temp'>${temp}&degF</h3></div>
+                <div><p class='feels-like'>(Feels like ${feelsLike}&degF)</p></div>
             </div>
         </container>`
     )

@@ -1,4 +1,4 @@
-.results ul {
+/* .results ul {
     list-style-type: none;
     border: 1px solid black;
     border-radius: 5px;
@@ -7,11 +7,21 @@
 
 .results li:last-child {
     padding-bottom: 10px;   
-}
+} */
 
 .main-weather {
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
+}
+
+.temp {
+    font-size: 28px;
+    font-weight: 400;
+    padding-right: 15px;
+}
+
+.feels-like {
+    font-style: italic;
 }
