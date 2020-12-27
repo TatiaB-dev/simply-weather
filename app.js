@@ -127,6 +127,7 @@ function getForecast(city) {
 function displayForecast(responseJson) {
 
     $('#js-results').removeClass('results');
+    $('#js-forecast-btn').addClass('hidden');
 
     for (let i = 0; i < responseJson.list.length; i += 8) {
         const date = getDate(responseJson.list[i].dt);
@@ -151,6 +152,8 @@ function displayForecast(responseJson) {
 }
 
 function displayCurrentWeather(responseJson) {
+
+    $('#js-forecast-btn').removeClass('hidden');
 
     const temp = Math.round(responseJson.main.temp);
     const feelsLike = Math.round(responseJson.main.feels_like);
