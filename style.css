@@ -1,13 +1,8 @@
-/* .results ul {
-    list-style-type: none;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 10px;
+.results {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 10px;
 }
-
-.results li:last-child {
-    padding-bottom: 10px;   
-} */
 
 .main-weather {
     display: flex;
