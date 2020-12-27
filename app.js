@@ -1,11 +1,15 @@
-// IP Geolocation API url and key
+// GLOBAL VARIABLES - API URLs and Keys // 
+
+    // IP Geolocation API url and key
 const ipGeoLocateURL = 'https://geo.ipify.org/api/v1';
 const ipGeoLocateKey = 'at_fELojdjZn4q2fyV7OJzuZSk6InEZK';
 
-// Open Weather API url and key
-const weatherURL = 'https://api.openweathermap.org/data/2.5/weather';
+    // Open Weather API url and key
+const currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 const forecastURL = 'http://api.openweathermap.org/data/2.5/forecast';
 const weatherKey = '3fa398fa8f3f496773abff4d988f09eb';
+
+
 
 // Formats the apis query parameters
 function formatQueryParams(params) {
@@ -35,7 +39,7 @@ function getWeather(zipcode) {
     }    
 
     const queryString = formatQueryParams(params);
-    const url = weatherURL + '?' + queryString;
+    const url = currentWeatherURL + '?' + queryString;
     fetch(url)
         .then(response => response.json())
         .then(responseJson => displayCurrentWeather(responseJson));
@@ -50,7 +54,7 @@ function getWeatherByCity(city) {
     }
 
     const queryString = formatQueryParams(params);
-    const url = weatherURL + '?' + queryString;
+    const url = currentWeatherURL + '?' + queryString;
     fetch(url)
         .then(response => response.json())
         .then(responseJson => displayCurrentWeather(responseJson));
