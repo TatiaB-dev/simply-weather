@@ -25,7 +25,7 @@ function getDate(unixTime) {
     let day = date.getDate();
     let year = date.getFullYear();
     let hour = date.getHours();
-    let minutes = date.getMinutes();
+    let minutes = ('0' + date.getMinutes()).slice(-2);
     let amOrPM = 'am';
 
     if (hour >= 12) {
@@ -34,8 +34,10 @@ function getDate(unixTime) {
 
     hour = (hour % 12) || 12;
 
-    let finalTime = hour + ':' + minutes + 0 + amOrPM
+    let finalTime = hour + ':' + minutes + amOrPM
     let finalDate = month + '.' + day + '.' + year
+
+    console.log(finalTime);
 
     return finalDate + ' ' + finalTime;
 }
@@ -141,6 +143,7 @@ function displayCurrentWeather(responseJson) {
     const icon = responseJson.weather[0].icon;
     const conditions = responseJson.weather[0].description;
     const miles = getMiles(responseJson.visibility)
+    const wind = responseJson.wind.speed;
     let sunset = getDate(responseJson.sys.sunset);
     let sunrise = getDate(responseJson.sys.sunrise);
     sunrise = sunrise.slice(10);
@@ -160,8 +163,9 @@ function displayCurrentWeather(responseJson) {
                 <ul class='weather-list'>
                     <li>Humidity: ${responseJson.main.humidity}%</li>
                     <li>Sunrise: ${sunrise}</li>
-                    <li>Sunset: ${sunset}</li>
+                    <li class='break'>Sunset: ${sunset}</li>
                     <li>Visibility: ${miles}</li>
+                    <li>Wind Speed: ${wind}m/h</li>
                 </ul>
             </section>
         </container>`

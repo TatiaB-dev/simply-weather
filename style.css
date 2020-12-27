@@ -28,7 +28,9 @@
 }
 
 .weather-details {
-    border-left: 1px solid black;
+    border-left: 2px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
 }
 
 .weather-list {
@@ -36,8 +38,13 @@
     list-style-position: inside;
     padding-left: 15px;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+}
+
+.weather-list li {
+    padding: 5px;
 }
 
 .user-input {
