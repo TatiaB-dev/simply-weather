@@ -20,7 +20,24 @@ function formatQueryParams(params) {
 
     // Formats date and time from unix timestamp to more legible date and time
 function getDate(unixTime) {
-    return dateObj = new Date(unixTime * 1000);
+    let date = new Date(unixTime * 1000);
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let amOrPM = 'am';
+
+    if (hour >= 12) {
+        amOrPM = 'pm';
+    }
+
+    hour = (hour % 12) || 12;
+
+    let finalTime = hour + ':' + minutes + 0 + amOrPM
+    let finalDate = month + '.' + day + '.' + year
+
+    return finalDate + ' ' + finalTime;
 }
 
     // Return html for weather icon
