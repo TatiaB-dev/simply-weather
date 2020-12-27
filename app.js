@@ -73,14 +73,30 @@ function getForecast(city) {
         .then(responseJson => displayForecast(responseJson));
 }
 
+// Get date and time from unixTime
+function getDate(unixTime) {
+    return dateObj = new Date(unixTime * 1000);
+}
+
 // Display Forecast
 function displayForecast(responseJson) {
-    console.log(responseJson);
+    console.log(responseJson.list.length);
 
-    $('#js-results').append(`
-    <ul>
-        <li>Test</li>
-    </ul>`)
+    for (let i = 0; i < responseJson.list.length; i += 2) {
+        const date = getDate(responseJson.list[i].dt)
+        const icon = responseJson.list[i].weather[0].icon;
+        const conditions = responseJson.list[i].weather[0].description;
+        
+        $('#js-results').append(`
+        <ul>
+            <li><h3>${date}</h3></li>
+            <li>${getWeatherIcon(icon, conditions)}</li>
+            <li>Take a look at the ${conditions}</li>
+            <li>${responseJson.list[i].main.temp}&degF</li>
+            <li>${responseJson.list[i].main.feels_like}&degF</li>
+            <li>${responseJson.list[i].main.humidity}%</li>
+        </ul>`)
+    }
 }
 
 // Display current weather
@@ -94,9 +110,10 @@ function displayCurrentWeather(responseJson) {
     getCityName(responseJson.name);
 
     $('#js-results').append(
-        `<h3>Here is your weather</h3>
+        `<h3>The weather right now is...</h3>
         <ul>
             <li>${getWeatherIcon(icon, conditions)}</li>
+            <li>Take a look at the ${conditions}</li>
             <li>Temperature: ${temp}&degF (Feels like: ${feelsLike}&degF)</li>
             <li>Humidity: ${responseJson.main.humidity}%</li>
         </ul>`
@@ -106,7 +123,7 @@ function displayCurrentWeather(responseJson) {
 // Return html for weather icon
 function getWeatherIcon(icon, conditions) {
     console.log(icon);
-    return `<img src='http://openweathermap.org/img/wn/${icon}.png' alt='${conditions}'`;
+    return `<img src='http://openweathermap.org/img/wn/${icon}.png' alt='${conditions}'>`;
 }
 
 // Return Update / return city name to h1

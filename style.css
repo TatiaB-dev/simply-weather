@@ -1,3 +1,10 @@
-li {
+.results ul {
     list-style-type: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.results li:last-child {
+    padding-bottom: 10px;   
 }
