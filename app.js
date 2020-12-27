@@ -37,8 +37,6 @@ function getDate(unixTime) {
     let finalTime = hour + ':' + minutes + amOrPM
     let finalDate = month + '.' + day + '.' + year
 
-    console.log(finalTime);
-
     return finalDate + ' ' + finalTime;
 }
 
