@@ -1,3 +1,5 @@
+'use strict';
+
 // GLOBAL VARIABLES - API URLs and Keys // 
 
     // IP Geolocation API url and key
@@ -71,8 +73,16 @@ function getPostalCode() {
     const url = ipGeoLocateURL + '?' + key;
 
     fetch(url)
-        .then(response => response.json())
-        .then(responseJson => getWeather(responseJson.location.postalCode));
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => getWeather(responseJson.location.postalCode))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        })
 }
 
 // Fetch Weather API Request Functions //
@@ -89,8 +99,16 @@ function getWeather(zipcode) {
     const queryString = formatQueryParams(params);
     const url = currentWeatherURL + '?' + queryString;
     fetch(url)
-        .then(response => response.json())
-        .then(responseJson => displayCurrentWeather(responseJson));
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayCurrentWeather(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        })
 }
 
 function getWeatherByCity(city) {
@@ -103,8 +121,16 @@ function getWeatherByCity(city) {
     const queryString = formatQueryParams(params);
     const url = currentWeatherURL + '?' + queryString;
     fetch(url)
-        .then(response => response.json())
-        .then(responseJson => displayCurrentWeather(responseJson));
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayCurrentWeather(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        })
 }
 
 function getForecast(city) {
@@ -118,8 +144,16 @@ function getForecast(city) {
     const queryString = formatQueryParams(params);
     const url = forecastURL + '?' + queryString;
     fetch(url)
-        .then(response => response.json())
-        .then(responseJson => displayForecast(responseJson));
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayForecast(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);g
+        })
 }
 
 // Displaying functions for each screen the user sees // 
