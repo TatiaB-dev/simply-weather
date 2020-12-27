@@ -54,7 +54,6 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: baseline;
 }
 
 .weather-list li {
@@ -88,4 +87,17 @@ input {
 
 .hidden {
     display: none;
+}
+
+/* Desktop Styling */
+
+@media all and (min-width: 600px) {
+
+    .card {
+        width: 50%;
+    }
+
+    .weather-list {
+        flex-direction: column;
+    }
 }
