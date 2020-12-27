@@ -2,6 +2,8 @@ main {
     padding-top: 20px;
 }
 
+/* Weather Result Styling (Mobile) */
+
 .results {
     display: flex;
     justify-content: center;
@@ -14,6 +16,12 @@ main {
     padding: 10px;
     width: 75%;
     margin: 20px;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-weather {
@@ -53,6 +61,8 @@ main {
     padding: 5px;
 }
 
+/* User Input / Form Styling (Mobile) */
+
 .user-input {
     padding: 15px;
     display: flex;
@@ -69,11 +79,7 @@ input {
     margin-right: 10px;
 }
 
-.forecast {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* Forecast Button Styling (Mobile) */
 
 .forecast-btn {
     display: flex;
