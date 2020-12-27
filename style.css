@@ -8,3 +8,10 @@
 .results li:last-child {
     padding-bottom: 10px;   
 }
+
+.main-weather {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}

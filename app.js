@@ -140,13 +140,20 @@ function displayCurrentWeather(responseJson) {
     getCityName(responseJson.name);
 
     $('#js-results').append(
-        `<h3>The weather right now is...</h3>
-        <ul>
-            <li>${getWeatherIcon(icon, conditions)}</li>
-            <li>Take a look at the ${conditions}</li>
-            <li>Temperature: ${temp}&degF (Feels like: ${feelsLike}&degF)</li>
-            <li>Humidity: ${responseJson.main.humidity}%</li>
-        </ul>`
+        // `<h3>The weather right now is...</h3>
+        // <ul>
+        //     <li>${getWeatherIcon(icon, conditions)} <p>${temp}&degF</p></li>
+        //     <li>Take a look at the ${conditions}</li>
+        //     <li>Temperature: ${temp}&degF (Feels like: ${feelsLike}&degF)</li>
+        //     <li>Humidity: ${responseJson.main.humidity}%</li>
+        // </ul>`
+        `<h3>The weather right now is... </h3>
+        <container>
+            <div class='main-weather'>
+                <div>${getWeatherIcon(icon, conditions)}</div>
+                <div>${temp}&degF</div>
+            </div>
+        </container>`
     )
 }
 
