@@ -43,8 +43,8 @@ main {
     padding-left: 15px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap-reverse;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: baseline;
 }
 
 .weather-list li {
