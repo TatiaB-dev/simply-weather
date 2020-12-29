@@ -1,6 +1,7 @@
 body {
-    background-image: linear-gradient(to right, #5b7d9f, #0EEEFF);
     margin: 0;
+    background: url('images/blur-flower.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Header Styling */
@@ -54,7 +55,7 @@ input {
     padding: 10px;
     width: 75%;
     margin: 20px;
-    background-color: #FFF;
+    background-color: rgba(237, 237, 237, 0.4);
 }
 
 .forecast {
