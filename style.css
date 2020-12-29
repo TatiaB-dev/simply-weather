@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Overpass:wght@100;200;300;400;600;700;800&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 body {
     margin: 0;
     background: url('images/blur-flower.jpg') no-repeat center center fixed;
@@ -15,8 +21,10 @@ header, header h1 {
 }
 
 header h1 {
-    font-size: 32px;
+    font-size: 38px;
     color: #2B0125;
+    font-family: 'Overpass', sans-serif;
+    letter-spacing: 2px;
 }
 
 /* User Input / Form Styling (Mobile) */
@@ -50,9 +58,15 @@ button {
     border-radius: 5px;
     background: rgba(13,176,248,0.6);
     width: 88px;
+    cursor: pointer;
+    outline: none;
 }
 
 /* Weather Result Styling (Mobile) */
+
+h2, h3 {
+    font-family: 'Overpass', sans-serif;
+}
 
 .results {
     display: flex;
@@ -80,36 +94,40 @@ button {
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .temp {
-    font-size: 28px;
-    font-weight: 400;
-    padding-right: 15px;
+    font-size: 42px;
+    font-weight: 200;
+    margin: 0;
 }
 
 .feels-like {
     font-style: italic;
+    font-size: 14px;
 }
 
-.weather-details {
+/* .weather-details-box {
     border-left: 2px solid black;
     border-bottom: 1px solid black;
+    border-color: #B9EEFD;
     border-radius: 5px;
-}
+} */
 
 .weather-list {
     list-style-type: none;
     list-style-position: inside;
     padding-left: 15px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
 .weather-list li {
     padding: 5px;
 }
+
 
 /* Forecast Button Styling (Mobile) */
 
@@ -122,7 +140,7 @@ button {
     border: none;
     background: transparent;
     font-size: 16px;
-    color: #B9EEFD;
+    color: #c3d0d4;
     width: fit-content;
 }
 
@@ -132,7 +150,44 @@ button {
 
 /* Desktop Styling */
 
-/* @media all and (min-width: 600px) {
+@media all and (min-width: 600px) {
+
+    header h1 {
+        font-size: 48px;      
+        letter-spacing: 8px;
+    }
+
+    main {
+        padding-top: 30px;
+    }
+
+    .weather-list {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .weather-list li {
+        line-height: 1.5em;
+    }
+
+    button:hover {
+        background-color: rgba(13, 178, 248, 0.342);
+    }
+
+    button:active {
+        background-color: rgba(13, 178, 248, 0.062);
+    }
+
+    .forecast-btn button:hover {
+        color: #bae6f3;
+    }
+
+    .forecast-btn button:active {
+        color:  #FFFFC8;
+    }
+}
+
+@media all and (min-width: 950px) {
 
     .card {
         width: 30%;
@@ -140,5 +195,6 @@ button {
 
     .weather-list {
         flex-direction: column;
+        flex-wrap: wrap;
     }
-} */
+}

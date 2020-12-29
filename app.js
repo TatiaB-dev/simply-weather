@@ -206,7 +206,7 @@ function displayCurrentWeather(responseJson) {
                     <div><h3 class='temp'>${temp}&degF</h3></div>
                     <div><p class='feels-like'>(Feels like ${feelsLike}&degF)</p></div>
                 </section>
-                <section class='weather-details'>
+                <section class='weather-details-box'>
                     <ul class='weather-list'>
                         <li>Humidity: ${responseJson.main.humidity}%</li>
                         <li>Visibility: ${miles}</li>
