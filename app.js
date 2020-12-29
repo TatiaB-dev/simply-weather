@@ -167,7 +167,7 @@ function displayForecast(responseJson) {
                 <div class='card'>
                     <h2>${weekday}</h2>
                     <p>${date}</p>
-                    <section class='main-weather'>
+                    <section class='weather-temp'>
                         <div>${getWeatherIcon(icon, conditions)}</div>
                         <div><h3 class='temp'>${responseJson.list[i].main.temp}&degF</h3></div>
                         <div><p class='feels-like'>(Feels like ${responseJson.list[i].main.feels_like}&degF)</p></div>
@@ -201,7 +201,7 @@ function displayCurrentWeather(responseJson) {
         `<div class='card current-weather'>
             <h3>The weather right now is... </h3>
             <container>
-                <section class='main-weather'>
+                <section class='weather-temp'>
                     <div>${getWeatherIcon(icon, conditions)}</div>
                     <div><h3 class='temp'>${temp}&degF</h3></div>
                     <div><p class='feels-like'>(Feels like ${feelsLike}&degF)</p></div>
