@@ -16,6 +16,7 @@ header, header h1 {
 
 header h1 {
     font-size: 32px;
+    color: #2B0125;
 }
 
 /* User Input / Form Styling (Mobile) */
@@ -26,19 +27,28 @@ header h1 {
 }
 
 .user-input {
-    padding: 15px;
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-label {
-    padding: 10px;
-}
+/* label {
+    width: 20%;
+} */
 
 input {
-    margin-right: 10px;
+    padding: 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+form button {
+    border: none;
+    border-radius: 5px;
+    background: rgba(13,176,248,0.6);
 }
 
 /* Weather Result Styling (Mobile) */
