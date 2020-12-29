@@ -136,6 +136,7 @@ h2, h3 {
     font-size: 16px;
     color: #c3d0d4;
     width: fit-content;
+    padding-bottom: 20px;
 }
 
 .hidden {
