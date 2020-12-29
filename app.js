@@ -199,7 +199,7 @@ function displayCurrentWeather(responseJson) {
 
     $('#js-results').append(
         `<div class='card current-weather'>
-            <h3>The weather right now is... </h3>
+            <h2>The weather right now is... </h2>
             <container>
                 <section class='weather-temp'>
                     <div>${getWeatherIcon(icon, conditions)}</div>
