@@ -45,10 +45,11 @@ input {
     width: 200px;
 }
 
-form button {
+button {
     border: none;
     border-radius: 5px;
     background: rgba(13,176,248,0.6);
+    width: 88px;
 }
 
 /* Weather Result Styling (Mobile) */
@@ -112,13 +113,17 @@ form button {
 
 /* Forecast Button Styling (Mobile) */
 
-form button {
-    width: 88px;
-}
-
 .forecast-btn {
     display: flex;
     justify-content: center;
+}
+
+.forecast-btn button {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #B9EEFD;
+    width: fit-content;
 }
 
 .hidden {
