@@ -51,6 +51,7 @@ input {
     border: none;
     border-radius: 5px;
     width: 200px;
+    outline: none;
 }
 
 button {
