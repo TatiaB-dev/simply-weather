@@ -179,6 +179,7 @@ h2, h3 {
     .forecast-btn button:active {
         color:  #FFFFC8;
     }
+    
 }
 
 @media all and (min-width: 950px) {
