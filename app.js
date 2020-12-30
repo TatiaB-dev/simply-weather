@@ -211,7 +211,7 @@ function displayCurrentWeather(responseJson) {
                 <section>
                     <ul class='weather-list'>
                         <li>Humidity: ${responseJson.main.humidity}%</li>
-                        <li><Visibility: ${miles}</li>
+                        <li>Visibility: ${miles}</li>
                         <li>Sunrise: ${sunrise}</li>
                         <li class='break'>Sunset: ${sunset}</li>
                         <li>Wind Speed: ${wind}m/h</li>
