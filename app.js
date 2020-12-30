@@ -142,7 +142,7 @@ function getForecast(city) {
         })
         .then(responseJson => displayForecast(responseJson))
         .catch(err => {
-            $("#js-error-message").text(`Something went wrong: ${err.message}`);g
+            $("#js-error-message").text(`Something went wrong: ${err.message}`);
         })
 }
 

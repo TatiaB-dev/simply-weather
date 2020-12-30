@@ -14,7 +14,7 @@
 
     <main>
 
-        <p id="js-error-message"></p>
+        <p id="js-error-message" class='error-message'></p>
         <section class="search-area">
             <form class="user-input">
                 <label for="js-search-city" class="hidden">Enter zipcode or city</label> <!-- Hidden for appearances, but available for screen readers  -->
@@ -29,8 +29,8 @@
         </section>
 
         <div class="forecast-btn">
-            <button id="js-forecast-btn">5 Day Forecast</button>
-            <button id="js-current-btn" class="hidden">Current Weather</button>
+            <button id="js-forecast-btn" tabindex="1">5 Day Forecast</button>
+            <button id="js-current-btn" class="hidden" tabindex="1">Current Weather</button>
         </div>
     </main>
 

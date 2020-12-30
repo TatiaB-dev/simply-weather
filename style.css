@@ -12,6 +12,10 @@ body {
     background-size: cover;
 }
 
+.error-message {
+    text-align: center;
+}
+
 /* Header Styling */
 
 header {
@@ -49,7 +53,10 @@ input {
     border: none;
     border-radius: 5px;
     width: 200px;
-    outline: none;
+}
+
+input:focus {
+    outline: 2px solid #2B0125;
 }
 
 button {
@@ -59,6 +66,10 @@ button {
     width: 88px;
     cursor: pointer;
     outline: none;
+}
+
+button:focus {
+    outline: 2px solid #2B0125;
 }
 
 input[type="search"], select:focus, button {
