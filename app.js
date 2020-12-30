@@ -170,7 +170,7 @@ function displayForecast(responseJson) {
                     <section class='weather-temp'>
                         <div>${getWeatherIcon(icon, conditions)}</div>
                         <div><h3 class='temp'>${Math.round(responseJson.list[i].main.temp)}&degF</h3></div>
-                        <div><p class='feels-like'>(Feels like ${responseJson.list[i].main.feels_like}&degF)</p></div>
+                        <div><p class='feels-like'>(Feels like ${Math.round(responseJson.list[i].main.feels_like)}&degF)</p></div>
                     </section>
                 </div>
             </section>
