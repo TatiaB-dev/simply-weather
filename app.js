@@ -38,13 +38,10 @@ function getDate(unixTime) {
     if (hour >= 12) {
         amOrPM = 'pm';
     }
-
     hour = (hour % 12) || 12;
 
     let finalTime = hour + ':' + minutes + amOrPM
     let finalDate = month + '/' + day + '/' + year
-
-    
     return finalDate + ' ' + finalTime;
 }
 
@@ -185,7 +182,6 @@ function displayCurrentWeather(responseJson) {
     $('#js-current-btn').addClass('hidden');
     $('#js-results').addClass('results');
 
-
     const temp = Math.round(responseJson.main.temp);
     const feelsLike = Math.round(responseJson.main.feels_like);
     const icon = responseJson.weather[0].icon;
@@ -262,8 +258,6 @@ function handleCurrentWeatherBtn() {
     })
 
 }
-
-
 
 function handleWeatherApp() {
     getPostalCode();
