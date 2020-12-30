@@ -64,6 +64,10 @@ button {
     outline: none;
 }
 
+input[type="search"], select:focus, button {
+    font-size: 16px;
+}
+
 /* Weather Result Styling (Mobile) */
 
 h2, h3 {
@@ -127,14 +131,6 @@ h2 {
 .weather-list li {
     padding: 5px;
 }
-
-input.text,
-input[type="text"],
-button[type="submit"],
-.input-checkbox {
-    -webkit-appearance: none;
-}
-
 
 /* Forecast Button Styling (Mobile) */
 
