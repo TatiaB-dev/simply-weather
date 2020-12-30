@@ -7,30 +7,30 @@
     <title>Simply Weather</title>
 </head>
 <body>
-    <div class='bg-image'></div>
+    <div class="bg-image"></div>
     <header>
         <h1 id="js-city-header"></h1>
     </header>
 
     <main>
 
-        <p id='js-error-message'></p>
-        <section class='search-area'>
-            <form class='user-input'>
-                <label for="js-search-city"></label>
-                <input type="search" id="js-search-city" name="search-city" placeholder="80203 or Denver" inputmode="search">
+        <p id="js-error-message"></p>
+        <section class="search-area">
+            <form class="user-input">
+                <label for="js-search-city" class="hidden">Enter zipcode or city</label> <!-- Hidden for appearances, but available for screen readers  -->
+                    <input type="search" id="js-search-city" name="search-city" placeholder="Zipcode or City" inputmode="search">
                 <button type="submit" id="js-find-btn">Search</button>
             </form>
         </section>
 
-        <section class='results-area'>
+        <section class="results-area">
             <div id="js-results" class="results">
             </div>
         </section>
 
-        <div class='forecast-btn'>
+        <div class="forecast-btn">
             <button id="js-forecast-btn">5 Day Forecast</button>
-            <button id="js-current-btn" class='hidden'>Current Weather</button>
+            <button id="js-current-btn" class="hidden">Current Weather</button>
         </div>
     </main>
 
