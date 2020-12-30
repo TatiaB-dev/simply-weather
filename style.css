@@ -11,6 +11,10 @@ body {
     background-size: cover;
 }
 
+main {
+    padding-bottom: 30px;
+}
+
 /* Header Styling */
 
 header {
@@ -159,7 +163,6 @@ h2 {
 
     main {
         padding-top: 30px;
-        padding-bottom: 30px;
     }
 
     .weather-list {
