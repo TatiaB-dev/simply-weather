@@ -6,13 +6,9 @@
 
 body {
     margin: 0;
-    margin-bottom: auto;
+    padding-bottom: 30px;
     background: url('images/blur-flower.jpg') no-repeat center center fixed;
     background-size: cover;
-}
-
-main {
-    padding-bottom: 30px;
 }
 
 /* Header Styling */
