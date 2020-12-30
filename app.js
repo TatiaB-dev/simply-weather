@@ -241,7 +241,7 @@ function handleForecastBtn() {
         event.preventDefault();
         $('#js-results').empty();
         const getCity = $('#js-city-header').text();
-        const city = getCity.replace('Hello, ',''); //Consider another way...??
+        const city = getCity.replace('Hello, ',''); 
 
         getForecast(city);
     })
