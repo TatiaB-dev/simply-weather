@@ -155,6 +155,7 @@ function displayForecast(responseJson) {
 
     $('#js-results').removeClass('results');
     $('#js-forecast-btn').addClass('hidden');
+    $('#js-current-btn').removeClass('hidden');
 
     for (let i = 0; i < responseJson.list.length; i += 8) {
         const date = getDate(responseJson.list[i].dt);
@@ -181,6 +182,7 @@ function displayForecast(responseJson) {
 function displayCurrentWeather(responseJson) {
 
     $('#js-forecast-btn').removeClass('hidden');
+    $('#js-current-btn').addClass('hidden');
     $('#js-results').addClass('results');
 
 
@@ -242,11 +244,23 @@ function handleForecastBtn() {
     $('#js-forecast-btn').on('click', function(event) {
         event.preventDefault();
         $('#js-results').empty();
-        const getCity = $('#js-city-header').text()
+        const getCity = $('#js-city-header').text();
         const city = getCity.replace('Hello, ',''); //Consider another way...??
 
         getForecast(city);
     })
+}
+
+function handleCurrentWeatherBtn() {
+    $('#js-current-btn').on('click', function(event) {
+        event.preventDefault();
+        $('#js-results').empty();
+        const getCity = $('#js-city-header').text();
+        const city = getCity.replace('Hello, ','');
+
+        getWeatherByCity(city);
+    })
+
 }
 
 
@@ -255,6 +269,7 @@ function handleWeatherApp() {
     getPostalCode();
     handleFormSubmit();
     handleForecastBtn();
+    handleCurrentWeatherBtn();
 }
 
 $(handleWeatherApp);
